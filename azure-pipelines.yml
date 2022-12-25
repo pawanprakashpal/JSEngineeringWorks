@@ -20,15 +20,10 @@ steps:
     buildType: 'current'
     downloadType: 'single'
     artifactName: 'drop'
-    downloadPath: '- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '$(System.ArtifactsDirectory)/**/*.zip'
-    destinationFolder: '$(System.ArtifactsDirectory)/drop/web-app'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: true'
+    downloadPath: '$(System.ArtifactsDirectory)'
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: '**/*.zip'
+    archiveFilePatterns: '$(System.ArtifactsDirectory)/**/*.zip'
     destinationFolder: '$(System.ArtifactsDirectory)/drop/web-app'
     cleanDestinationFolder: true
     overwriteExistingFiles: true
