@@ -15,21 +15,15 @@ steps:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
 - task: PublishBuildArtifacts@1
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'current'
-    downloadType: 'single'
-    artifactName: 'drop'
-    downloadPath: '$(System.ArtifactsDirectory)'
 - task: ExtractFiles@1
   inputs:
-    archiveFilePatterns: '$(System.ArtifactsDirectory)/**/*.zip'
-    destinationFolder: '$(System.ArtifactsDirectory)/drop/web-app'
+    archiveFilePatterns: '$(System.ArtifactsDirectory)/*.zip'
+    destinationFolder: '$(System.ArtifactsDirectory)/web-app'
     cleanDestinationFolder: true
     overwriteExistingFiles: true
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'PublishProfile'
-    PublishProfilePath: '$(System.ArtifactsDirectory)/drop/web-app/*.pubxml'
+    PublishProfilePath: '$(System.ArtifactsDirectory)/web-app/*.pubxml'
     PublishProfilePassword: '$(password)'
-    packageForLinux: '$(System.ArtifactsDirectory)/drop/*.zip'
+    packageForLinux: '$(System.ArtifactsDirectory)/*.zip'
