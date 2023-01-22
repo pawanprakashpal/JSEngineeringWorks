@@ -15,15 +15,13 @@ steps:
     rootFolderOrFile: '$(build.sourcesDirectory)'
     includeRootFolder: false
 - task: PublishBuildArtifacts@1
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '$(System.ArtifactsDirectory)/*.zip'
-    destinationFolder: '$(System.ArtifactsDirectory)/web-app'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: true
 - task: AzureRmWebAppDeployment@4
   inputs:
-    ConnectionType: 'PublishProfile'
-    PublishProfilePath: '$(System.ArtifactsDirectory)/web-app/*.pubxml'
-    PublishProfilePassword: '$(password)'
-    packageForLinux: '$(System.ArtifactsDirectory)/*.zip'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(8a9a4550-2527-4dae-9573-f9b9cddde027)'
+    appType: 'webAppLinux'
+    WebAppName: 'jsengineering'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'jse-rgp-01'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
