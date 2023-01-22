@@ -24,4 +24,4 @@ steps:
     deployToSlotOrASE: true
     ResourceGroupName: 'jse-rgp-01'
     SlotName: 'production'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(System.ArtifactsDirectory)/**/*.zip'
