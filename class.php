@@ -37,8 +37,8 @@ class contactForm
 
 	function sendEmail($smtp, $from, $to, $cc, $bcc, $subject)
 	{
-		ini_set("SMTP","$smtp");
-		//ini_set('smtp_port', '465');
+		ini_set("SMTP", "$smtp");
+		//ini_set('smtp_port','465');
 		ini_set('sendmail_from', $from);
 
 		$this->prepareEmail();
@@ -47,8 +47,9 @@ class contactForm
 		$headers = "MIME-Version: 1.0" . "\r\n";
 		$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 		$headers .= "From:" . $from . "\r\n";
+
 		try {
-			if (mail($to, $this->msg, $headers)) {
+			if (mail($to, $subject, $this->msg, $headers)) {
 				return "Thank you for contacting us. We will be in touch with you very soon.";
 			} else {
 				error_log($this->msg);

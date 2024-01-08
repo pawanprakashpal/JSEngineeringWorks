@@ -3,22 +3,14 @@
 <?php
 $check = "";
 if (!empty($_POST) && isset($_POST["submit"]) && $_POST["submit"] == "Submit") {
-    // require('class.php');
-    // $contact = new contactForm($_POST);
-    // $check = $contact->sendEmail("mail.jsengineeringworks.com", "info@jsengineeringworks.com", "info@jsengineeringworks.com", "", "", "Contact Form");
 
-    // Recipient email address (replace with your own)
-    $recipient = "onlypawanpal@gmail.com";
+    require('class.php');
 
-    // Additional headers
-    $headers = "From: test <abc@axyz.com>";
+    $contact = new contactForm($_POST);
 
-    // Send email
-    if (mail($recipient, "thgus is test message", $headers)) {
-        echo "Email sent successfully!";
-    } else {
-        echo "Failed to send email. Please try again later.";
-    }
+    // Function definition - 
+    // sendEmail(SMTP,From,To,Cc,BCc,Subject);
+    $check = $contact->sendEmail("mail.jsengineeringworks.com", "info@jsengineeringworks.com", "info@jsengineeringworks.com", "", "", "Contact Form");
 }
 ?>
 <html lang="zxx">
@@ -82,7 +74,6 @@ if (!empty($_POST) && isset($_POST["submit"]) && $_POST["submit"] == "Submit") {
             window.scrollTo(0, 1);
         }
     </script>
-    <script src="form.js"></script>
     <!-- //Meta tag Keywords -->
 
     <!-- Custom-Files -->
