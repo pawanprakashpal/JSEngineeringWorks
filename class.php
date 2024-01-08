@@ -37,8 +37,8 @@ class contactForm
 
 	function sendEmail($smtp, $from, $to, $cc, $bcc, $subject)
 	{
-		//ini_set("SMTP","$smtp");
-		ini_set('smtp_port', '465');
+		ini_set("SMTP","$smtp");
+		//ini_set('smtp_port', '465');
 		ini_set('sendmail_from', $from);
 
 		$this->prepareEmail();
